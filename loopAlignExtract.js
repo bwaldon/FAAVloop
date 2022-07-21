@@ -7,11 +7,11 @@ glob("FAVE-align/*.wav", function (er, files) {
 
         let fileName = files[i].replace(/\.[^/.]+$/, "")
         fileName = fileName.replace("FAVE-align\/","")
-        
+
         console.log(sprintf("Currently aligning for %s...", fileName))
 
         shelljs.cd("FAVE-align")
-        let cmd = sprintf("python FAAValign.py -v -i %s.wav %s.txt", fileName)
+        let cmd = sprintf("python FAAValign.py -v -i %s.wav %s.txt", fileName, fileName)
         console.log(sprintf("COMMAND: %s", cmd))
         shelljs.exec(cmd)
         shelljs.cd("..")
@@ -19,7 +19,7 @@ glob("FAVE-align/*.wav", function (er, files) {
         console.log(sprintf("Currently extracting for %s...", fileName))
 
         shelljs.cd("FAVE-extract")
-        cmd = sprintf("python bin/FAAVextract.py -v -i ../FAVE-align/%s.wav ../FAVE-align/%s.TextGrid ", fileName)
+        cmd = sprintf("python bin/FAAVextract.py -v -i ../FAVE-align/%s.wav ../FAVE-align/%s.TextGrid ", fileName, fileName)
         console.log(sprintf("COMMAND: %s", cmd))
         shelljs.exec(cmd)
         shelljs.cd("..")
@@ -27,3 +27,4 @@ glob("FAVE-align/*.wav", function (er, files) {
     }
 
 })
+
