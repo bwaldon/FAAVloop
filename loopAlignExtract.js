@@ -9,15 +9,15 @@ glob("FAVE-align/*.wav", function (er, files) {
     	
     	console.log(sprintf("Currently aligning for %s...", fileName))
 
-    	shelljs.exec("cd FAVE-align")
+    	shelljs.cd("FAVE-align")
     	shelljs.exec(sprintf("python FAAValign.py -v -i %s.wav %s.txt"), fileName, fileName)
-    	shelljs.exec("cd ..")
+    	shelljs.cd("..")
 
     	console.log(sprintf("Currently extracting for %s...", fileName))
 
-    	shelljs.exec("cd FAVE-extract")
+    	shelljs.cd("FAVE-extract")
     	shelljs.exec(sprintf("python bin/FAAVextract.py -v -i ../FAVE-align/%s.wav ../FAVE-align/%s.TextGrid "), fileName, fileName)
-    	shelljs.exec("cd ..")
+    	shelljs.cd("..")
 
     }
 
