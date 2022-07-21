@@ -6,8 +6,8 @@ glob("FAVE-align/*.wav", function (er, files) {
     for(var i = 0; i < files.length; i++) {
 
         let fileName = files[i].replace(/\.[^/.]+$/, "")
-        fileName = fileName.replace("FAVE-align","")
-
+        fileName = fileName.replace("FAVE-align\/","")
+        
         console.log(sprintf("Currently aligning for %s...", fileName))
 
         shelljs.cd("FAVE-align")
